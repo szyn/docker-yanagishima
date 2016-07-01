@@ -11,7 +11,9 @@ COPY bin/start.sh bin/start.sh
 COPY conf/yanagishima.properties conf/yanagishima.properties
 
 COPY docker-entrypoint.sh docker-entrypoint.sh
-RUN chmod +x docker-entrypoint.sh
+RUN chmod +x docker-entrypoint.sh && \
+chmod +x bin/start.sh && \
+mkdir result
 
 EXPOSE 8080
 
