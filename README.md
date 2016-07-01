@@ -2,7 +2,8 @@
 docker image for yanagishima
 
 ## Description
-This is dockernize yanagishima.
+This is dockernize yanagishima.  
+[yanagishima](https://github.com/wyukawa/yanagishima) is a Web UI for presto
 
 # feature
 * Easy to use
@@ -36,9 +37,9 @@ please be sure to set following enviroment value.
 ```bash
 docker run -it -p 8080:8080 \
 -e PRESTO_COODINATOR_URL=presto-coodinator:8080 \
--e  CATALOG=hive \
+-e CATALOG=hive \
 -e SCHEMA=user \
-syzn/docker-yanagishima
+szyn/docker-yanagishima
 ```
 
 ## Contribution
