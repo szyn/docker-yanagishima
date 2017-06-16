@@ -7,7 +7,6 @@ This is dockernize yanagishima.
 
 # feature
 * Easy to use
-* Alpine based image (so fast and lightweight!)
 
 ## Requirement
 * Docker
