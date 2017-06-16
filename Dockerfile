@@ -3,7 +3,10 @@ MAINTAINER szyn <aqr.aqua@gmail.com>
 
 ENV VERSION=5.0
 
-RUN apt-get update -y && apt-get install -y  unzip openssl bash && \
+RUN apt-get update -y && \
+apt-get install -y  unzip openssl bash && \
+apt-get clean && \
+rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
 wget https://bintray.com/artifact/download/wyukawa/generic/yanagishima-${VERSION}.zip && \
 unzip yanagishima-${VERSION}.zip && \
 rm yanagishima-${VERSION}.zip
