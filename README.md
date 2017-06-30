@@ -1,6 +1,8 @@
 # docker-yanagishima
 docker image for yanagishima
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/szyn/docker-yanagishima.svg?style=flat-square)]()
+
 ## Description
 This is dockernize yanagishima.  
 [yanagishima](https://github.com/wyukawa/yanagishima) is a Web UI for presto
