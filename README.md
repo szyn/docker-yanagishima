@@ -25,11 +25,11 @@ Before you want to run docker image,
 please be sure to set following enviroment value.
 
 * PRESTO_COODINATOR_URL
-   - Please set Presto coordinator url value (e.g. presto-coodinator:8080)
+   - Please set Presto coordinator url (e.g. presto-coodinator:8080)
 * CATALOG
-   - Please set catalog name. (e.g. hive, mysql...)
+   - Please set catalog name (e.g. hive, mysql...)
 * SCHEMA
-   - Please set scheme(table) name. (e.g. user)
+   - Please set scheme(table) name (e.g. user)
 
 ```bash
 docker run -it -p 8080:8080 \
@@ -38,12 +38,6 @@ docker run -it -p 8080:8080 \
 -e SCHEMA=user \
 szyn/docker-yanagishima
 ```
-
-## Contribution
-
-
-## Licence
-[MIT](https://github.com/szyn/docker-yanagishima/blob/master/LICENSE)
 
 ## Author
 [szyn](https://github.com/szyn)
