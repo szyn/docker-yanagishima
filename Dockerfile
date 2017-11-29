@@ -1,24 +1,18 @@
-FROM java:8u111-jre
-MAINTAINER szyn <aqr.aqua@gmail.com>
+FROM openjdk:8u131-jre-alpine
+LABEL maintainer "szyn <aqr.aqua@gmail.com>"
 
 ENV VERSION=5.0
 
-RUN apt-get update -y && \
-apt-get install -y  unzip openssl bash && \
-apt-get clean && \
-rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* && \
-wget https://bintray.com/artifact/download/wyukawa/generic/yanagishima-${VERSION}.zip && \
-unzip yanagishima-${VERSION}.zip && \
-rm yanagishima-${VERSION}.zip
+RUN apk add --no-cache unzip openssl bash && \
+    cd /tmp && \
+    wget https://bintray.com/artifact/download/wyukawa/generic/yanagishima-${VERSION}.zip && \
+    unzip yanagishima-${VERSION}.zip -d /opt && \
+    rm yanagishima-${VERSION}.zip && \
+    sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd
 
-WORKDIR yanagishima-${VERSION}
-COPY bin/start.sh bin/start.sh
-COPY conf/yanagishima.properties conf/yanagishima.properties
-
-COPY docker-entrypoint.sh docker-entrypoint.sh
-RUN chmod +x docker-entrypoint.sh && \
-chmod +x bin/start.sh
+WORKDIR /opt/yanagishima-${VERSION}
+COPY . .
 
 EXPOSE 8080
 
-CMD ["sh", "docker-entrypoint.sh"]
+CMD ["bash", "docker-entrypoint.sh"]
