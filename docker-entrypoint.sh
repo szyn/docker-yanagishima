@@ -1,7 +1,15 @@
 #!/bin/bash
-CONF_PATH=/yanagishima-${VERSION}/conf/yanagishima.properties
-sed -i -e "s/\${PRESTO_COODINATOR_URL}/${PRESTO_COODINATOR_URL}/g" ${CONF_PATH}
-sed -i -e "s/\${CATALOG}/${CATALOG}/g" ${CONF_PATH}
-sed -i -e "s/\${SCHEMA}/${SCHEMA}/g" ${CONF_PATH}
+CONF_FILE=/opt/yanagishima-${VERSION}/conf/yanagishima.properties
 
-sh /yanagishima-${VERSION}/bin/start.sh
+declare -A PARAMS
+PARAMS=(
+  ["PRESTO_COODINATOR_URL"]=${PRESTO_COODINATOR_URL}
+  ["CATALOG"]=${CATALOG}
+  ["SCHEMA"]=${SCHEMA}
+)
+
+for key in "${!PARAMS[@]}"; do
+  sed -i -e "s|\${${key}}|${PARAMS[$key]}|g" ${CONF_FILE}
+done
+
+bash /opt/yanagishima-${VERSION}/bin/start.sh
