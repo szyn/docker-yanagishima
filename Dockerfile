@@ -1,7 +1,7 @@
 FROM openjdk:8u131-jre-alpine
 LABEL maintainer "szyn <aqr.aqua@gmail.com>"
 
-ENV VERSION=5.0
+ENV VERSION=6.0
 
 RUN apk add --no-cache unzip openssl bash && \
     cd /tmp && \
