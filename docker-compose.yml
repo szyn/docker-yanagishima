@@ -1,0 +1,26 @@
+version: "3"
+services:
+  yanagishima:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      PRESTO_COODINATOR_URL: http://presto:8080
+      CATALOG: mariadb
+      SCHEMA: sample
+    depends_on:
+      - presto
+      - mariadb
+
+  presto:
+    image: skame/presto:0.189
+    volumes:
+      - .docker/presto/etc:/opt/presto/etc
+
+  mariadb:
+    image: mariadb:10.3.2
+    volumes:    
+      - .docker/mariadb:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: sample      
+      MYSQL_ROOT_PASSWORD: secret
