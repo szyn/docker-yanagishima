@@ -10,8 +10,8 @@ done
 echo $yanagishima_dir;
 echo $CLASSPATH;
 
-executorport=`cat $yanagishima_dir/conf/yanagishima.properties | grep executor.port | cut -d = -f 2`
-serverpath=`pwd`
+executorport=$(cat $yanagishima_dir/conf/yanagishima.properties | grep executor.port | cut -d = -f 2)
+serverpath=$(pwd)
 
 if [ -z $YANAGISHIMA_OPTS ]; then
   YANAGISHIMA_OPTS=-Xmx3G
